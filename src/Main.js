@@ -12,7 +12,7 @@ const Main = () => {
 	useEffect(() => {
 		async function getDataFromApi() {
 			let res = await Promise.all([
-				axios.get(`http://localhost:5000/data/1`)
+				axios.get(`https://cvt-test-backend.herokuapp.com/data/1`)
 				// axios.get(`http://localhost:5000/data/2`),
 				// axios.get(`http://localhost:5000/data/3`)
 				// axios.get(`http://localhost:5000/data/4`),
