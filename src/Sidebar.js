@@ -956,14 +956,14 @@ const Sidebar = ({activeSidebar,setActiveSidebar,setWeightsDone, setData,setLoad
 											// 		);
 											const intermediate = Object.entries(weights).filter(goal=>goal[1].weight!==0)
 																	.map(goal=>['*',goal[1].weight/100,
-																	                ["+",0, ...goal[1].selected.map(measure=>{
+																	                ["/",["+",0, ...goal[1].selected.map(measure=>{
 																							if(measure.utility==='1'){
 																								console.log( ['*',weightList[measure.weight],['number',['get', measure.value]]])
 																								return ['*',weightList[measure.weight],['number',['get', measure.value]]]
 																							}else{
 																								return ['+',1, ['*',-1*weightList[measure.weight],['number',['get', measure.value]]]]
 																							}
-																					})]
+																					})],goal[1].selected.length]
 																	]);
 											const newData = [
 												"step", 
