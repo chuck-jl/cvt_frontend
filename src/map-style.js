@@ -1,21 +1,20 @@
 export const dataLayer = {
-    id: 'data',
-    type: 'fill',
-    paint: {
-        'fill-color': {
-          property: 'value',
-          stops: [
-            [0, '#3288bd'],
-            [.1, '#66c2a5'],
-            [.2, '#abdda4'],
-            [.3, '#e6f598'],
-            [.4, '#ffffbf'],
-            [.5, '#fee08b'],
-            [.6, '#fdae61'],
-            [.7, '#f46d43'],
-            [1, '#d53e4f']
-          ]
-        },
-        'fill-opacity': 0.8
-      }
-  };
+	id: 'cvt-data',
+	'source-layer': 'whole_data_singlepart1-7hgszb',
+	type: 'fill',
+	minzoom: 8,
+	maxzoom: 20
+};
+
+export const dataLayerHightLight = {
+	id: 'cvt-data-highlighted',
+	type: 'fill',
+	source: 'cvt',
+	'source-layer': 'whole_data_singlepart1-7hgszb',
+	paint: {
+		'fill-outline-color': '#484896',
+		'fill-color': '#6e599f',
+		'fill-opacity': 0.75
+	},
+	filter: [ 'in', 'OBJECTID', '' ]
+};

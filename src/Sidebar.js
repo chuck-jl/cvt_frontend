@@ -4,7 +4,7 @@ import RangeSlider from 'react-bootstrap-range-slider';
 import './main.css';
 import Select from 'react-select';
 import {useDispatch,useSelector} from 'react-redux';
-import {changeMeasures,changeMeasuresWeight,changeGoalWeights} from './action'
+import {changeMeasures,changeMeasuresWeight,changeGoalWeights} from './action';
 
 
 
@@ -15,7 +15,7 @@ const Sidebar = ({activeSidebar,setActiveSidebar,setWeightsDone, setData,setLoad
 	const dispatch = useDispatch();
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    const handleShow = () => setShow(true);
 
 	const [ radioValue, setRadioValue ] = useState('SCA');
     const weights =  useSelector(state => state.weights)
@@ -934,38 +934,59 @@ const Sidebar = ({activeSidebar,setActiveSidebar,setWeightsDone, setData,setLoad
 									<Button variant='primary' onClick={()=>{
 										async function calculateNewData(){
 											setWeightsDone(false);
-											await setData(data=>({
-											type:'FeatureCollection',
-											features: data.features.map(feature=>{
-												const newFeature = {...feature};
-												const weightsArray = Object.values(weights);
-												let value=0;
-												for(let goal of weightsArray){
-													if(goal.weight!==0){
-														let goalValue = 0;
-														goal.selected.forEach(measure=>{
-															if(measure.weight==='high'){
-																goalValue += Number(measure.utility)*newFeature['properties'][measure.value]
-															}else if(measure.weight==='medium'){
-																goalValue += Number(measure.utility)*newFeature['properties'][measure.value]*0.67
-															}else{
-																goalValue += Number(measure.utility)*newFeature['properties'][measure.value]*0.34
-															}
-														})
-														value+=goalValue*goal.weight/100
-													}
-												}
-												newFeature['properties']['value']=value;
-												return newFeature;
-											})
-										}	
-										))
-										setWeightsDone(true);
+											const weightList = {
+												'high': 1,
+												'medium':0.67,
+												'low':0.33
+											}
+											
+											// const intermediate=	Object.entries(weights)
+											// 		.filter(goal=>goal[1].weight!==0)
+											// 		.map(goal=>
+											// 			['*',goal[1].weight/100,["+", 
+											// 				goal[1].selected.map(measure=>{
+											// 					if(measure.utility==='1'){
+											// 						console.log( ['*',weightList[measure.weight],['number',['get', measure.value]]])
+											// 						return ['*',weightList[measure.weight],['number',['get', measure.value]]]
+											// 					}else{
+											// 						return ['+',1, ['*',-1*weightList[measure.weight],['number',['get', measure.value]]]]
+											// 					}
+											// 				})
+											// 			]]
+											// 		);
+											const intermediate = Object.entries(weights).filter(goal=>goal[1].weight!==0)
+																	.map(goal=>['*',goal[1].weight/100,
+																	                ["+",0, ...goal[1].selected.map(measure=>{
+																							if(measure.utility==='1'){
+																								console.log( ['*',weightList[measure.weight],['number',['get', measure.value]]])
+																								return ['*',weightList[measure.weight],['number',['get', measure.value]]]
+																							}else{
+																								return ['+',1, ['*',-1*weightList[measure.weight],['number',['get', measure.value]]]]
+																							}
+																					})]
+																	]);
+											const newData = [
+												"step", 
+												['+',0,
+												  ...intermediate
+											    ],
+												"#ffeda0",
+												.1, "#ffeda0",
+												.2, "#fed976",
+												.3, "#feb24c",
+												.4, "#fd8d3c",
+												.5, "#fc4e2a",
+												.6, "#e31a1c",
+												.7, "hsl(348, 100%, 37%)",
+												.8, "#bd0026"]
+											await setData(data=>newData);
+											setWeightsDone(true);
+											setActiveSidebar(false);
+											
 										}
 										if(Object.values(weights).reduce((a,b)=>{return a+b.weight},0)!==100){
 											handleShow()
 										}else{
-											
 										    calculateNewData();
 										}
 										
