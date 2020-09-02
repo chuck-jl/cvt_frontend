@@ -15,6 +15,5 @@ export const dataLayerHightLight = {
 		'fill-outline-color': '#484896',
 		'fill-color': '#6e599f',
 		'fill-opacity': 0.75
-	},
-	filter: [ 'in', 'OBJECTID', '' ]
+	}
 };

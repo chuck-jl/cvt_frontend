@@ -8,19 +8,11 @@ const Main = () => {
 	const [ activeSidebar, setActiveSidebar ] = useState(false);
 	const [data, setData] = useState(null);
 
-	const [loading, setLoading] = useState('');
-	useEffect(()=>{
-		if(!data){
-			setLoading('Loading spatial data from server...')
-		}else{
-			setLoading('')
-		}
-	},[data])
 	const [weightsDone, setWeightsDone]=useState(false);
 
 	return (
 		<div>
-			<Sidebar activeSidebar={activeSidebar} setActiveSidebar={setActiveSidebar} setWeightsDone={setWeightsDone} setData={setData} setLoading={setLoading}/>
+			<Sidebar activeSidebar={activeSidebar} setActiveSidebar={setActiveSidebar} setWeightsDone={setWeightsDone} setData={setData} />
 			<div style={{ height: '100%', position: 'relative' }} className="content">
 				<Button
 					style={{ position: 'absolute', top: '80px', left: '50px', zIndex: 1 }}
@@ -32,10 +24,6 @@ const Main = () => {
 					Start
 				</Button>
 				<Map weightsDone={weightsDone} data={data}/>
-				{loading && <div className='loadingbar'>
-				    <Spinner animation="border" />
-					<span>{loading}</span>
-				</div>}
 			</div>
 		</div>
 	);

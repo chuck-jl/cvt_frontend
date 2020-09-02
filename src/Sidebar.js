@@ -11,7 +11,7 @@ import {changeMeasures,changeMeasuresWeight,changeGoalWeights} from './action';
 
 const RESTOREGoal = ['Habitat', 'Water Quality & Quantity', 'Living Coastal & Marine Resources','Community Resilience','Gulf Economy']
 
-const Sidebar = ({activeSidebar,setActiveSidebar,setWeightsDone, setData,setLoading}) =>{
+const Sidebar = ({activeSidebar,setActiveSidebar,setWeightsDone, setData}) =>{
 	const dispatch = useDispatch();
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);

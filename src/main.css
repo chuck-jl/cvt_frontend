@@ -64,15 +64,6 @@
     background-color: #a1a3a7;
 }
 
-.loadingbar {
-    position:absolute;
-    top:93.5vh;
-    right:.1vw;
-    z-index:2;
-    background-color:white;
-    border-radius: 50px;
-    padding: 5px;
-}
 
 
 /* ---------------------------------------------------
