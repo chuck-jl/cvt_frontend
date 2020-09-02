@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Spinner } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button} from 'react-bootstrap';
 import Map from './Map';
 import './main.css';
 import Sidebar from './Sidebar';
