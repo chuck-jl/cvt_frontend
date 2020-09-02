@@ -8,7 +8,8 @@
     position: absolute;
     top: 55.5px;
     left: -600px;
-    height: 100vh;
+    height: auto;
+    min-height: 94.3vh;
     z-index: 5;
     background: #292a2b;
     color: #fff;
