@@ -71,7 +71,7 @@ const Sidebar = ({activeSidebar,setActiveSidebar,setWeightsDone, setData}) =>{
 										</ToggleButton>
 									</ButtonGroup>
 									<br />
-									<Accordion.Toggle eventKey="1" as={Button}>
+									<Accordion.Toggle eventKey="1" as={Button} variant="dark">
 										Next
 									</Accordion.Toggle>
 								</Card.Body>
@@ -719,7 +719,7 @@ const Sidebar = ({activeSidebar,setActiveSidebar,setWeightsDone, setData}) =>{
 											</div>
 										))}
 									<br />
-									<Accordion.Toggle eventKey="2" as={Button}>
+									<Accordion.Toggle eventKey="2" as={Button} variant="dark">
 										Next
 									</Accordion.Toggle>
 								</Card.Body>
@@ -835,7 +835,7 @@ const Sidebar = ({activeSidebar,setActiveSidebar,setWeightsDone, setData}) =>{
                                     }
 									</Form>
 									<br />
-									<Accordion.Toggle eventKey="3" as={Button}>
+									<Accordion.Toggle eventKey="3" as={Button} variant="dark">
 										Next
 									</Accordion.Toggle>
 								</Card.Body>
@@ -931,7 +931,7 @@ const Sidebar = ({activeSidebar,setActiveSidebar,setWeightsDone, setData}) =>{
 
 								    </tbody>
 									</Table>
-									<Button variant='primary' onClick={()=>{
+									<Button variant='dark' onClick={()=>{
 										async function calculateNewData(){
 											setWeightsDone(false);
 											const weightList = {

@@ -43,7 +43,7 @@ const Map = ({ weightsDone, data }) => {
 			mapStyle="mapbox://styles/mapbox/light-v9"
 			onViewportChange={(nextViewport) => setViewport(nextViewport)}
 			mapboxApiAccessToken={MAPBOX_TOKEN}
-			onHover={onHover}
+			onClick={onHover}
 		>
 			{weightsDone && (
 				<>
