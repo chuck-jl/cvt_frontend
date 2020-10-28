@@ -74,7 +74,7 @@ const Nav = () => {
 					{formType === 'signin' && <SigninForm handleClose={handleClose} />}
 					{formType === 'register' && <RegisterForm handleClose={handleClose} />}
 					<hr/>
-					<a href="https://www.quest.fwrc.msstate.edu/sca/newsletter.php" target="_blank">Stay connected by signing up our newsletter!</a>
+					<a href="https://www.quest.fwrc.msstate.edu/sca/newsletter.php">Stay connected by signing up our newsletter!</a>
 				</Modal.Body>
 			</Modal>
 		</div>
